@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero MotoCorp - World's Largest Two-Wheeler Manufacturer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --hero-red: #e30613;
+            --hero-dark: #1a1a1a;
+            --hero-gray: #f5f5f5;
+            --hero-blue: #0066b3;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: #000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-top {
+            background: var(--hero-dark);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-top-left a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: color 0.3s;
+        }
+
+        .header-top-left a:hover {
+            color: var(--hero-red);
+        }
+
+        .header-top-right a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            transition: color 0.3s;
+        }
+
+        .header-top-right a:hover {
+            color: var(--hero-red);
+        }
+
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .main-nav li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .main-nav a:hover {
+            color: var(--hero-red);
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-buttons a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-buttons a:hover {
+            color: var(--hero-red);
+        }
+
+        .nav-buttons .btn {
+            background: var(--hero-red);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .nav-buttons .btn:hover {
+            background: #c10510;
+            color: white;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Video Hero Section */
+        .video-hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--hero-red);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #c10510;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--hero-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Bike Showcase */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            color: white;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bike-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .bike-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bike-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .bike-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .bike-info {
+            padding: 20px;
+            color: white;
+        }
+
+        .bike-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .bike-info p {
+            color: #ccc;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .bike-price {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--hero-red);
+            margin-bottom: 15px;
+        }
+
+        .bike-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .bike-link i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+
+        .bike-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Features Section */
+        .features {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 60px 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: var(--hero-red);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        /* Video Showcase */
+        .video-showcase {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--hero-dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--hero-red);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--hero-red);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #999;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .main-nav {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav-buttons {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .bike-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container header-top-content">
+                <div class="header-top-left">
+                    <a href="#"><i class="fas fa-phone-alt"></i> +91 124 2345678</a>
+                    <a href="#"><i class="fas fa-envelope"></i> contact@heromotocorp.com</a>
+                </div>
+                <div class="header-top-right">
+                    <a href="#"><i class="fas fa-globe"></i> Global</a>
+                    <a href="#"><i class="fas fa-user"></i> Login</a>
+                </div>
+            </div>
+        </div>
+        <div class="container header-main">
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Indian_Motorcycle_logo.svg/640px-Indian_Motorcycle_logo.svg.png" alt=" MotoCorp">
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Our World</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Innovation</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Media</a></li>
+                </ul>
+            </nav>
+            <div class="nav-buttons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i> Locate Us</a>
+                <a href="#" class="btn">Contact Us</a>
+            </div>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Video Hero Section -->
+    <section class="video-hero">
+        <video autoplay muted loop class="video-background">
+            <source src="https://assets.mixkit.co/videos/43114/43114-720.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay"></div>
+        <div class="hero-content">
+            <h1>Ride The Future</h1>
+            <p>Experience the next generation of two-wheelers with cutting-edge technology and superior performance</p>
+            <div class="hero-buttons">
+                <a href="#" class="hero-btn btn-primary">Explore Models</a>
+                <a href="#" class="hero-btn btn-secondary">Book a Test Ride</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bike Showcase -->
+    <section class="container">
+        <div class="section-title">
+            <h2>Our Premium Range</h2>
+            <p>Discover our wide range of two-wheelers designed for every need and lifestyle</p>
+        </div>
+        <div class="bike-grid">
+            <div class="bike-card">
+                <div class="bike-img" style="background-image: url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="bike-info">
+                    <h3>Xtreme 160R</h3>
+                    <p>Performance meets style in this powerful machine</p>
+                    <div class="bike-price">Starting at ₹1,20,000</div>
+                    <a href="#" class="bike-link">Explore More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="bike-card">
+                <div class="bike-img" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="bike-info">
+                    <h3>Destini 125</h3>
+                    <p>Elegant design with unmatched fuel efficiency</p>
+                    <div class="bike-price">Starting at ₹75,000</div>
+                    <a href="#" class="bike-link">Explore More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="bike-card">
+                <div class="bike-img" style="background-image: url('https://images.unsplash.com/photo-1567899378494-47b22b6bcd6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="bike-info">
+                    <h3>Maestro Edge 110</h3>
+                    <p>Comfort and style for the urban rider</p>
+                    <div class="bike-price">Starting at ₹68,000</div>
+                    <a href="#" class="bike-link">Explore More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="bike-card">
+                <div class="bike-img" style="background-image: url('https://images.unsplash.com/photo-1623778027845-94c101a92b76?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="bike-info">
+                    <h3>Electric Optima</h3>
+                    <p>Eco-friendly and efficient electric scooter</p>
+                    <div class="bike-price">Starting at ₹85,000</div>
+                    <a href="#" class="bike-link">Explore More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Hero</h2>
+                <p>We are committed to delivering excellence in every aspect of our products and services</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Advanced Engineering</h3>
+                    <p>Cutting-edge technology and innovation in every vehicle we produce</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Eco-Friendly</h3>
+                    <p>Committed to sustainable mobility solutions for a greener future</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer service and support network</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safety First</h3>
+                    <p>Rigorous testing and safety standards for your peace of mind</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Showcase -->
+    <section class="video-hero">
+        <div class="container">
+            <div class="section-title">
+                <h2>Experience The Thrill</h2>
+                <p>Watch our latest models in action on the racing circuit</p>
+            </div>
+            <div >
+                <video autoplay muted loop class="video-background">
+            <source src="https://assets.mixkit.co/videos/3/3-720.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#">Motorcycles</a></li>
+                        <li><a href="#">Scooters</a></li>
+                        <li><a href="#">Electric Vehicles</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Book Service</a></li>
+                        <li><a href="#">Insurance</a></li>
+                        <li><a href="#">Extended Warranty</a></li>
+                        <li><a href="#">Service Centers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>About Us</h4>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Investor Relations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="#">Customer Care</a></li>
+                        <li><a href="#">Locate Dealer</a></li>
+                        <li><a href="#">Feedback</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Hero MotoCorp Ltd. All Rights Reserved. | Privacy Policy | Terms of Use</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            
+            mobileToggle.addEventListener('click', () => {
+                mainNav.style.display = mainNav.style.display === 'flex' ? 'none' : 'flex';
+            });
+        });
+    </script>
+</body>
+</html>
